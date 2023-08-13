@@ -34,3 +34,18 @@ N個前の停留所を通過
 約M分で発車します
 ```
 
+### Dockerを使用する場合
+*host*
+``` sh
+docker build -t bus_departure .
+docker run -it bus_departure /bin/sh
+```
+
+*container*
+``` sh
+crontab -e
+* * * * * sh /workspace/script.sh >> /var/log/cron.log
+cron && tail -f /var/log/cron.log
+# stop command
+service cron stop
+```
